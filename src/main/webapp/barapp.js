@@ -11,7 +11,7 @@ function getProducten(){
         myNode.removeChild(myNode.firstChild);
     }
 
-    fetch('http://localhost:8080/barapp/restservices/product/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/product/' + window.sessionStorage.getItem("kassa"))
         .then(function (response) {
          return response.json();
         })
@@ -48,7 +48,7 @@ var totaal = 0;
 function voegLijstToe(event) {
     var product = [];
     
-    fetch('http://localhost:8080/barapp/restservices/product/byId/' + event.target.attributes.value.value)
+    fetch('../restservices/product/byId/' + event.target.attributes.value.value)
     .then(function (response) {
         return response.json();
     })
@@ -135,7 +135,7 @@ function laadCategorie(event){
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
     }
-    fetch('http://localhost:8080/barapp/restservices/product/byCat/' + event.target.attributes.value.value)
+    fetch('../restservices/product/byCat/' + event.target.attributes.value.value)
     .then(function (response) {
      return response.json();
     })
@@ -174,7 +174,7 @@ function transactie(){
     var jsonString= JSON.stringify(transactie);
     console.log(transactie);
 
-    fetch("http://localhost:8080/barapp/restservices/transactie", { 
+    fetch("../restservices/transactie", { 
                                                                     method: 'POST',
                                                                     headers: {
                                                                         'Accept': 'application/json',
@@ -198,7 +198,7 @@ function transactie(){
 
 //haal het budget op.
 function getBudget(){
-    fetch('http://localhost:8080/barapp/restservices/kassa/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/kassa/' + window.sessionStorage.getItem("kassa"))
     .then(function (response) {
      return response.json();
     })
@@ -348,7 +348,7 @@ function getTransacties(){
         myNode.removeChild(myNode.firstChild);
     }
 
-    fetch('http://localhost:8080/barapp/restservices/transactie/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/transactie/' + window.sessionStorage.getItem("kassa"))
     .then(function (response) {
      return response.json();
     })
@@ -411,7 +411,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var datum = document.querySelector("#datumInput").value;
         console.log(datum);
 
-        fetch('http://localhost:8080/barapp/restservices/transactie/byDate/' + window.sessionStorage.getItem("kassa") + "/" + datum)
+        fetch('../restservices/transactie/byDate/' + window.sessionStorage.getItem("kassa") + "/" + datum)
         .then(function (response) {
         return response.json();
         })
@@ -437,7 +437,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var mnr = document.querySelector("#medInput").value;
         console.log(mnr);
 
-        fetch('http://localhost:8080/barapp/restservices/transactie/byMnr/' + window.sessionStorage.getItem("kassa") + "/" + mnr)
+        fetch('../restservices/transactie/byMnr/' + window.sessionStorage.getItem("kassa") + "/" + mnr)
         .then(function (response) {
         return response.json();
         })
@@ -462,7 +462,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
             myNode.removeChild(myNode.firstChild);
         }
 
-        fetch('http://localhost:8080/barapp/restservices/product/bestel/' + window.sessionStorage.getItem("kassa"))
+        fetch('../restservices/product/bestel/' + window.sessionStorage.getItem("kassa"))
         .then(function (response) {
         return response.json();
         })
@@ -508,7 +508,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
 if(window.sessionStorage.getItem("functie") == "Barhoofd"){
     document.querySelector("#bevestig").addEventListener("click", function(event){
         if(window.localStorage.getItem("order") == "true"){
-            fetch('http://localhost:8080/barapp/restservices/product/bevestig/' + window.sessionStorage.getItem("kassa") + "/" + window.localStorage.getItem("totaal"), {method: 'POST', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+            fetch('../restservices/product/bevestig/' + window.sessionStorage.getItem("kassa") + "/" + window.localStorage.getItem("totaal"), {method: 'POST', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
             .then(function() { 
                 getBudget();    
                 var myNode = document.querySelector("#bestelling");
@@ -533,7 +533,7 @@ function openWijzig(event){
         document.querySelector("#ov").style.display = "none";
         document.querySelector("#prodPop").style.display = "block";
 
-        fetch('http://localhost:8080/barapp/restservices/product/byId/' + event.target.value)
+        fetch('../restservices/product/byId/' + event.target.value)
         .then(function (response) {
              return response.json();
         })
@@ -554,7 +554,7 @@ function openWijzig(event){
         document.querySelector("#ov").style.display = "none";
         document.querySelector("#medPop").style.display = "block";
 
-        fetch('http://localhost:8080/barapp/restservices/medewerker/' + event.target.value)
+        fetch('../restservices/medewerker/' + event.target.value)
         .then(function (response) {
              return response.json();
         })
@@ -573,7 +573,7 @@ function openWijzig(event){
         document.querySelector("#ov").style.display = "none";
         document.querySelector("#kassaPop").style.display = "block";
 
-        fetch('http://localhost:8080/barapp/restservices/kassa/' + event.target.value)
+        fetch('../restservices/kassa/' + event.target.value)
         .then(function (response) {
              return response.json();
         })
@@ -612,7 +612,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var frmToevoeg = new FormData(document.querySelector("#prodFormToe"));
         var toeEncData = new URLSearchParams(frmToevoeg.entries());
 
-        fetch("http://localhost:8080/barapp/restservices/product/" + window.sessionStorage.getItem("kassa"), { method: 'POST', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/product/" + window.sessionStorage.getItem("kassa"), { method: 'POST', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -628,7 +628,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var frmToevoeg = new FormData(document.querySelector("#medFormToe"));
         var toeEncData = new URLSearchParams(frmToevoeg.entries());
 
-        fetch("http://localhost:8080/barapp/restservices/medewerker/" + window.sessionStorage.getItem("kassa"), { method: 'POST', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/medewerker/" + window.sessionStorage.getItem("kassa"), { method: 'POST', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -686,7 +686,7 @@ function verwijderFunc(event){
     console.log(ovCat + " - " + event.target.value);
 
     if(ovCat == "Product"){
-        fetch("http://localhost:8080/barapp/restservices/product/"+event.target.value, { method: 'DELETE', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/product/"+event.target.value, { method: 'DELETE', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -696,7 +696,7 @@ function verwijderFunc(event){
     }
 
     if(ovCat == "Medewerker"){
-        fetch("http://localhost:8080/barapp/restservices/medewerker/"+event.target.value, { method: 'DELETE', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/medewerker/"+event.target.value, { method: 'DELETE', headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -712,7 +712,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var frmToevoeg = new FormData(document.querySelector("#medForm"));
         var toeEncData = new URLSearchParams(frmToevoeg.entries());
         
-        fetch("http://localhost:8080/barapp/restservices/medewerker/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/medewerker/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -728,7 +728,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var frmToevoeg = new FormData(document.querySelector("#prodForm"));
         var toeEncData = new URLSearchParams(frmToevoeg.entries());
         
-        fetch("http://localhost:8080/barapp/restservices/product/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/product/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             console.log(myJson); 
@@ -744,7 +744,7 @@ if(window.sessionStorage.getItem("functie") == "Barhoofd"){
         var frmToevoeg = new FormData(document.querySelector("#kassaForm"));
         var toeEncData = new URLSearchParams(frmToevoeg.entries());
         
-        fetch("http://localhost:8080/barapp/restservices/kassa/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
+        fetch("../restservices/kassa/"+codeWeizig, { method: 'PUT', body: toeEncData, headers : { 'Authorization': 'Bearer ' +  window.sessionStorage.getItem("myJWT") }})
         .then(response => response.json())
         .then(function(myJson) { 
             alert("kassa gewijzigd");
@@ -762,7 +762,7 @@ function ovOpenKassa(){
     }
     document.querySelector("#voegtoe").style.display = "none";
 
-    fetch('http://localhost:8080/barapp/restservices/kassa/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/kassa/' + window.sessionStorage.getItem("kassa"))
     .then(function (response) {
             return response.json();
     })
@@ -821,7 +821,7 @@ function ovOpenMed(){
     document.querySelector("#voegtoe").style.display = "block";
     document.querySelector("#voegtoe").innerHTML = "Voeg medewerker toe";
 
-    fetch('http://localhost:8080/barapp/restservices/medewerker/byKassa/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/medewerker/byKassa/' + window.sessionStorage.getItem("kassa"))
     .then(function (response) {
             return response.json();
     })
@@ -897,7 +897,7 @@ function ovOpenProd(){
     document.querySelector("#voegtoe").style.display = "block";
     document.querySelector("#voegtoe").innerHTML = "Voeg product toe";
 
-    fetch('http://localhost:8080/barapp/restservices/product/' + window.sessionStorage.getItem("kassa"))
+    fetch('../restservices/product/' + window.sessionStorage.getItem("kassa"))
     .then(function (response) {
             return response.json();
     })
