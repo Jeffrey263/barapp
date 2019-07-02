@@ -32,12 +32,12 @@ function getMedewerker(mnr, kassa){
             window.sessionStorage.setItem("kassa", kassa);
             if(myJson.functie == "Barhoofd"){
                 window.location.href = '../barapp/barhoofd.html'
-                //window.open("../barapp/barhoofd.html");
+                //window.open("../barhoofd.html");
             }
 
             if(myJson.functie =="medewerker"){
                 window.location.href = '../barapp/medewerker.html'
-                //window.open("../barapp/medewerker.html");
+                //window.open("../medewerker.html");
             }
         })
 }
