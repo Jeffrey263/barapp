@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Barsysteem</title>
+        <link rel='icon' href='ashwood favicon.gif' type='image/x-icon'/>
+        <link rel="stylesheet"  href="SharedStyles.css" />
+    </head>
+    <body onload="initPage()"  class="medewerkerpage">  
+        <div class=framme id="frame">
+            <div id ="head" class="header">
+                <img src="Ashwood wit.png" alt="logo" class="logoProg">
+                <button class="headBtn" style="height: 90px" id="account">Account</button>
+                <button class="headBtn" style="height: 90px" id="verkoop">Verkoop</button>
+            </div>
+            <div id ="prod">
+            </div>
+            <div id ="func">
+                <div class=box>
+                    <p4 >Totaal: &euro;</p4>
+                    <p4 id="tot">0</p4>  
+                </div>  
+                <button class="headBtn" id="af"  style="height: 45px;">Afrekenen</button>
+                <button class="headBtn" id="anu" style="height: 45px;">Annuleren</button>
+            </div>
+            <div id ="cat" class="header">
+                    <button class="headBtn" id="Alles"  style="width: 100%">Alles</button>
+                    <button class="headBtn" id="Bier" value="Bier" style="width: 100%">Bier</button>
+                    <button class="headBtn" id="Wijn" value="Wijn" style="width: 100%">Wijn</button>
+                    <button class="headBtn" id="Fris" value="Fris" style="width: 100%">Fris</button>
+                    <button class="headBtn" id="Sterk" value="Sterk" style="width: 100%">Sterk</button>
+                    <button class="headBtn" id="Mix" value="Mix" style="width: 100%">Mix</button>
+            </div>
+            <div id ="lijst">            
+            </div>
+            <!-- ACOUNT -->     
+            <div id="acc" style="display: none">
+                <div class="card" id=accCard>
+                    <br><br>
+                    <p5 id="accNummer">medewerker nummer: </p5><br>
+                    <p5 id="accNaam">naam: </p5><br>
+                    <p5 id="accFunctie">functie: </p5><br>
+                    <button class="Btn" id="uitlog">uitloggen</button><br>
+                </div>
+            </div>              
+        </div>      
+        <script src="barapp.js"></script>        
+    </body>
+</html>

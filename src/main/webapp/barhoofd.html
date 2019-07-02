@@ -1,0 +1,234 @@
+<html>
+    <head>
+        <title>Barsysteem</title>
+        <link rel='icon' href='ashwood favicon.gif' type='image/x-icon'/>
+        <link rel="stylesheet"  href="SharedStyles.css" />
+    </head>
+    <body onload="initPage()"  class="medewerkerpage">  
+        <!-- FRAME -->
+        <div class=framme id="frame">
+            <!-- HEADER -->
+            <div id ="head" class="header">
+                <img src="Ashwood wit.png" alt="logo" class="logoProg">
+                <button class="headBtn" style="height: 90px" id="account">Account</button>
+                <button class="headBtn" style="height: 90px" id="verkoop">Verkoop</button>
+                <button class="headBtn" style="height: 90px" id="transacties">Transacties</button>
+                <button class="headBtn" style="height: 90px" id="bestellingen">bestellingen</button>
+                <button class="headBtn" style="height: 90px" id="overzicht">Overzicht</button>
+            </div>
+            <!-- PRODUCTEN -->
+            <div id ="prod">
+            </div>
+            <!-- FUNCTIES -->
+            <div id ="func">
+                <div class=box>
+                    <p4 >Totaal: &euro;</p4>
+                    <p4 id="tot">0</p4>  
+                </div>  
+                <button class="headBtn" id="af"  style="height: 45px;">Afrekenen</button>
+                <button class="headBtn" id="anu" style="height: 45px;">Annuleren</button>
+            </div>
+            <!-- CATEGORIEN -->
+            <div id ="cat" class="header">
+                    <button class="headBtn" id="Alles"  style="width: 100%"><br>Alles<br><br></button>
+                    <button class="headBtn" id="Bier" value="Bier" style="width: 100%"><br>Bier<br><br></button>
+                    <button class="headBtn" id="Wijn" value="Wijn" style="width: 100%"><br>Wijn<br><br></button>
+                    <button class="headBtn" id="Fris" value="Fris" style="width: 100%"><br>Fris<br><br></button>
+                    <button class="headBtn" id="Sterk" value="Sterk" style="width: 100%"><br>Sterk<br><br></button>
+                    <button class="headBtn" id="Mix" value="Mix" style="width: 100%"><br>Mix<br><br></button>
+            </div>
+            <!-- LIJST -->
+            <div id ="lijst">            
+            </div>
+            <!-- TRANSACTIES -->
+            <div id="trans" style="display: none">
+            </div>
+            <!-- TRANSTOOLS -->
+            <div id=tTools class="header" style="display: none">
+                <button class="headBtn" id="AlleTrans"  style="width: 100%"><br>Alle transacties<br><br></button>
+                <div class="headBtnNoHover" style="width: 100%">
+                    <br>
+                    <p5>na datum:</p5>
+                    <br>
+                    <input name="datum" id=datumInput type="date" placeholder="Datum" style="width: 50%; margin-left: 5px;">
+                    <button class="Btn" id="DatumTrans"  style="width: 20%; height: 45px;">></button>
+                    <br><br>
+                </div>
+                <div class="headBtnNoHover" style="width: 100%">
+                    <br>
+                    <p5>medewerker:</p5>
+                    <br>
+                    <input name="medewerkerTrans" id=medInput type="number" placeholder="medewerker nummer" style="width: 50%; margin-left: 5px;">
+                    <button class="Btn" id="MedTrans"  style="width: 20%; height: 45px;">></button>
+                    <br><br>
+                </div>
+            </div>
+            <!-- FUNCTIES BESTELLING -->
+            <div id ="funcBes" style="display: none">
+                <div class=box style="width: 240px;">
+                    <p4 >Budget: &euro;</p4>
+                    <p4 id="bud">0</p4>  
+                </div>  
+                <button class="headBtn" id="print"  style="height: 45px;">Print bon</button>
+                <button class="headBtn" id="bevestig" style="height: 45px;">bevestig bestelling</button>
+            </div>
+            <!-- Bestelling -->
+            <div id="bestelling" style="display: none">
+            </div>   
+            <!-- ACOUNT -->     
+            <div id="acc" style="display: none">
+                <div class="card" id=accCard>
+                    <br><br>
+                    <p5 id="accNummer">medewerker nummer: </p5><br>
+                    <p5 id="accNaam">naam: </p5><br>
+                    <p5 id="accFunctie">functie: </p5><br>
+                    <button class="Btn" id="uitlog">uitloggen</button><br>
+                </div>
+            </div>  
+            <!-- OVERZICHT FUNCTIES -->     
+            <div id="ovFunc" style="display: none">
+                <button class="headBtn" id="voegtoe"  style="height: 45px;">Voeg toe</button>
+            </div>     
+            <!-- OVERZICHT TOOLS -->     
+            <div id="ovTools" class="header" style="display: none">
+                <button class="headBtn" id="kassaOv"  style="width: 100%"><br>Kassa<br><br></button>
+                <button class="headBtn" id="medOv"  style="width: 100%"><br>Medewerkers<br><br></button>
+                <button class="headBtn" id="prodOv"  style="width: 100%"><br>Producten<br><br></button>
+            </div>      
+            <!-- OVERZICHT -->     
+            <div id="ov" style="display: none">
+            </div> 
+            <!-- PRODUCT POP-UP --> 
+            <div id="prodPop" class="card" style="display: none; overflow-y:scroll;">
+                <form id="prodForm">
+                    <br>
+                    <h2 id="wijzigHeaderProd" style="margin-left: 15%">Wijzig: </h2><br>
+                    <p5 style="margin-left: 15%">Naam:</p5><br>
+                    <input id="ovNaam" name="naam" type="text" placeholder="naam"><br><br><br>
+                    <p5 style="margin-left: 15%">Prijs:</p5><br>
+                    <input id="ovPrijs" name="prijs" type="number" placeholder="prijs"><br><br><br>
+                    <p5 style="margin-left: 15%">Inkoop prijs:</p5><br>
+                    <input id="ovInkoop" name="inkoopPrijs" type="number" placeholder="inkoop prijs"><br><br><br>
+                    <p5 style="margin-left: 15%">Minimale voorraad:</p5><br>
+                    <input id="ovMinV" name="minVoorraad" type="number" placeholder="minimale voorraad"><br><br><br>
+                    <p5 style="margin-left: 15%">Voorraad:</p5><br>
+                    <input id="ovVoorraad" name="voorraad" type="number" placeholder="voorraad"><br><br><br>
+                    <p5 style="margin-left: 15%">Categorie:</p5><br>
+                    <div class=" select">
+                        <select id="ovCat" name="categorie">
+                            <option value="Bier">Bier</option>
+                            <option value="Wijn">WIjn</option>
+                            <option value="Fris">Fris</option>
+                            <option value="Sterk">Sterk</option>
+                            <option value="Mix">Mix</option>
+                        </select>
+                        <div class="select_arrow">
+                        </div>
+                    </div>
+                </form>
+                <button id="anuWijzig" class="btn" style="margin-left: 15%">Anuleren</button>
+                <button id="WijzigProd" class="btn" >Wijzig product</button><br>
+            </div>
+            <!-- PRODUCT TOEVOEG POP-UP --> 
+            <div id="prodPopToe" class="card" style="display: none; overflow-y:scroll;">
+                <form id="prodFormToe">
+                    <br>
+                    <h2 id="wijzigHeaderProdToe" style="margin-left: 15%">Voeg product toe: </h2><br>
+                    <p5 style="margin-left: 15%">Naam:</p5><br>
+                    <input id="ovNaam" name="naam" type="text" placeholder="naam"><br><br><br>
+                    <p5 style="margin-left: 15%">Prijs:</p5><br>
+                    <input id="ovPrijs" name="prijs" type="number" placeholder="prijs"><br><br><br>
+                    <p5 style="margin-left: 15%">Inkoop prijs:</p5><br>
+                    <input id="ovInkoop" name="inkoopPrijs" type="number" placeholder="inkoop prijs"><br><br><br>
+                    <p5 style="margin-left: 15%">Minimale voorraad:</p5><br>
+                    <input id="ovMinV" name="minVoorraad" type="number" placeholder="minimale voorraad"><br><br><br>
+                    <p5 style="margin-left: 15%">Voorraad:</p5><br>
+                    <input id="ovVoorraad" name="voorraad" type="number" placeholder="voorraad"><br><br><br>
+                    <p5 style="margin-left: 15%">Categorie:</p5><br>
+                    <div class=" select">
+                        <select id="ovCat" name="categorie">
+                            <option value="Bier">Bier</option>
+                            <option value="Wijn">WIjn</option>
+                            <option value="Fris">Fris</option>
+                            <option value="Sterk">Sterk</option>
+                            <option value="Mix">Mix</option>
+                        </select>
+                        <div class="select_arrow">
+                        </div>
+                    </div>
+                </form>
+                <button id="anuToevoeg" class="btn" style="margin-left: 15%">Anuleren</button>
+                <button id="VoegProdToe" class="btn" >Voeg product toe</button><br>
+            </div>
+            
+            <!-- MEDEWERKER POP-UP --> 
+            <div id="medPop" class="card" style="display: none; overflow-y:scroll;">
+                <form id="medForm">
+                    <br>
+                    <h2 id="wijzigHeaderMed" style="margin-left: 15%">Wijzig: </h2><br>
+                    <p5 style="margin-left: 15%">Voorletters:</p5><br>
+                    <input id="medVL" name="VL" type="text" placeholder="voorletters"><br><br><br>
+                    <p5 style="margin-left: 15%">Tussenvoegsel:</p5><br>
+                    <input id="medTV" name="TV" type="text" placeholder="tussenvoegsel"><br><br><br>
+                    <p5 style="margin-left: 15%">Achternaam:</p5><br>
+                    <input id="medA" name="A" type="text" placeholder="achternaam"><br><br><br>
+                    <p5 style="margin-left: 15%">Functie:</p5><br>
+                    <div class=" select">
+                        <select id="medF" name="F">
+                            <option value="medewerker">Medewerker</option>
+                            <option value="Barhoofd">Barhoofd</option>
+                        </select>
+                        <div class="select_arrow">
+                        </div>
+                    </div>
+                </form>
+                <button id="anuWijzigMed" class="btn" style="margin-left: 15%">Anuleren</button>
+                <button id="WijzigMedewerker" class="btn" >Wijzig medewerker</button><br>
+            </div>
+
+            <!-- MEDEWERKER TOEVOEG POP-UP --> 
+            <div id="medPopToe" class="card" style="display: none; overflow-y:scroll;">
+                <form id="medFormToe">
+                    <br>
+                    <h2 id="wijzigHeaderMedToe" style="margin-left: 15%">Voeg medewerker toe: </h2><br>
+                    <p5 style="margin-left: 15%">Voorletters:</p5><br>
+                    <input id="medVL" name="VL" type="text" placeholder="voorletters"><br><br><br>
+                    <p5 style="margin-left: 15%">Tussenvoegsel:</p5><br>
+                    <input id="medTV" name="TV" type="text" placeholder="tussenvoegsel"><br><br><br>
+                    <p5 style="margin-left: 15%">Achternaam:</p5><br>
+                    <input id="medA" name="A" type="text" placeholder="achternaam"><br><br><br>
+                    <p5 style="margin-left: 15%">Wachtwoord:</p5><br>
+                    <input id="medWW" name="WW" type="text" placeholder="functie"><br><br><br>
+                    <p5 style="margin-left: 15%">Functie:</p5><br>
+                    <div class=" select">
+                        <select id="medF" name="F">
+                            <option value="medewerker">Medewerker</option>
+                            <option value="Barhoofd">Barhoofd</option>
+                        </select>
+                        <div class="select_arrow">
+                        </div>
+                    </div>
+                </form>
+                <button id="anuMedToe" class="btn" style="margin-left: 15%">Anuleren</button>
+                <button id="medToe" class="btn" >Voeg medewerker toe</button><br>
+            </div>            
+            <!-- KASSA POP-UP --> 
+            <div id="kassaPop" class="card" style="display: none; overflow-y:scroll;">
+                    <form id="kassaForm">
+                        <br>
+                        <h2 id="wijzigHeaderKassa" style="margin-left: 15%">Wijzig: </h2><br>
+                        <p5 style="margin-left: 15%">Naam:</p5><br>
+                        <input id="kassaNaam" name="kNaam" type="text" placeholder="naam"><br><br><br>
+                        <p5 style="margin-left: 15%">Locatie:</p5><br>
+                        <input id="kassaLocatie" name="kLocatie" type="text" placeholder="locatie"><br><br><br>
+                        <p5 style="margin-left: 15%">budget:</p5><br>
+                        <input id="kassaBudget" name="kBudget" type="number" placeholder="budget"><br><br><br>
+                    </form>
+                    <button id="anuWijzigKassa" class="btn" style="margin-left: 15%">Anuleren</button>
+                    <button id="WijzigKassa" class="btn" >Wijzig Kassa</button><br>
+                </div>
+            
+        </div>      
+        <script src="barapp.js"></script>        
+    </body>
+</html>
