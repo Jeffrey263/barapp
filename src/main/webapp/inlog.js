@@ -5,7 +5,7 @@ function login(event) {
     var formData = new FormData(document.querySelector("#loginform"));
     var encData = new URLSearchParams(formData.entries());
     
-    fetch("http://localhost:8080/barapp/restservices/authentication", { method: 'POST', body: encData })
+    fetch("../restservices/authentication", { method: 'POST', body: encData })
         .then(function(response) {
           if (response.ok) return response.json();
           else alert("Wrong username/password");
@@ -18,7 +18,7 @@ function login(event) {
 }    
 
 function getMedewerker(mnr, kassa){
-    fetch('http://localhost:8080/barapp/restservices/medewerker/' + mnr)
+    fetch('../restservices/medewerker/' + mnr)
         .then(function (response) {
          return response.json();
         })
