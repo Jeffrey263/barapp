@@ -338,7 +338,7 @@ document.querySelector("#uitlog").addEventListener("click",function(event){
     window.sessionStorage.setItem("functie", null);
     window.sessionStorage.setItem("kassa", null);
 
-    window.location.href = '../barapp';
+    window.location.href = '../';
 });
 
 //Haal alle transacties op.
